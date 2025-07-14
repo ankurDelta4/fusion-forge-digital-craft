@@ -61,6 +61,13 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// Custom neon colors
+				neon: {
+					pink: 'hsl(var(--neon-pink))',
+					green: 'hsl(var(--neon-green))',
+					purple: 'hsl(var(--electric-purple))',
+					yellow: 'hsl(var(--cyber-yellow))'
 				}
 			},
 			borderRadius: {
@@ -88,7 +95,18 @@ export default {
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'float': 'float 6s ease-in-out infinite',
+				'pulse-glow': 'pulseGlow 2s ease-in-out infinite alternate',
+				'fade-in': 'fadeIn 0.6s ease-out',
+				'slide-up': 'slideUp 0.8s ease-out',
+				'scale-in': 'scaleIn 0.5s ease-out',
+				'rotate-slow': 'rotateSlow 20s linear infinite'
+			},
+			backgroundImage: {
+				'gradient-primary': 'var(--gradient-primary)',
+				'gradient-accent': 'var(--gradient-accent)',
+				'gradient-bg': 'var(--gradient-bg)'
 			}
 		}
 	},
