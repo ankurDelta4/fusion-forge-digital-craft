@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X, Code, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,8 +20,9 @@ const Navigation = () => {
     { href: '/services', label: 'Services' },
     { href: '/portfolio', label: 'Portfolio' },
     { href: '/about', label: 'About' },
-    { href: '/#testimonials', label: 'Testimonials' },
-    { href: '/#contact', label: 'Contact' }
+    { href: '/blog', label: 'Blog' },
+    { href: '/case-studies', label: 'Case Studies' },
+    { href: '/contact', label: 'Contact' }
   ];
 
   return (
@@ -40,28 +42,27 @@ const Navigation = () => {
             className="flex items-center space-x-2"
             whileHover={{ scale: 1.05 }}
           >
-            <div className="relative">
-              <Code className="h-8 w-8 text-primary" />
-              <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-accent" />
-            </div>
-            <span className="text-xl font-bold gradient-text">Freelance Fusion</span>
+            <Link to="/" className="flex items-center space-x-2">
+              <div className="relative">
+                <Code className="h-8 w-8 text-primary" />
+                <Sparkles className="absolute -top-1 -right-1 h-4 w-4 text-accent" />
+              </div>
+              <span className="text-xl font-bold gradient-text">Freelance Fusion</span>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item, index) => (
-              <motion.a
-                key={item.href}
-                href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium relative group"
-                whileHover={{ y: -2 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
-              </motion.a>
+              <motion.div key={item.href}>
+                <Link
+                  to={item.href}
+                  className="text-foreground hover:text-primary transition-colors duration-200 font-medium relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </motion.div>
             ))}
             <motion.div
               initial={{ opacity: 0, scale: 0.8 }}
@@ -94,17 +95,20 @@ const Navigation = () => {
             >
               <div className="flex flex-col space-y-4">
                 {navItems.map((item, index) => (
-                  <motion.a
+                  <motion.div
                     key={item.href}
-                    href={item.href}
-                    className="text-foreground hover:text-primary transition-colors duration-200 font-medium py-2"
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
-                    onClick={() => setIsMenuOpen(false)}
                   >
-                    {item.label}
-                  </motion.a>
+                    <Link
+                      to={item.href}
+                      className="text-foreground hover:text-primary transition-colors duration-200 font-medium py-2 block"
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
                 ))}
                 <Button className="bg-gradient-primary hover:opacity-90 w-full mt-4">
                   Get Started
