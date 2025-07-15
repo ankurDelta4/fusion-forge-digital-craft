@@ -62,12 +62,12 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// Custom neon colors
-				neon: {
-					pink: 'hsl(var(--neon-pink))',
-					green: 'hsl(var(--neon-green))',
-					purple: 'hsl(var(--electric-purple))',
-					yellow: 'hsl(var(--cyber-yellow))'
+				// Custom cinematic colors
+				cinema: {
+					blue: 'hsl(var(--cinema-blue))',
+					ocean: 'hsl(var(--ocean-blue))',
+					sky: 'hsl(var(--sky-blue))',
+					steel: 'hsl(var(--steel-blue))'
 				}
 			},
 			borderRadius: {
@@ -106,7 +106,12 @@ export default {
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-accent': 'var(--gradient-accent)',
-				'gradient-bg': 'var(--gradient-bg)'
+				'gradient-bg': 'var(--gradient-bg)',
+				'gradient-hero': 'var(--gradient-hero)'
+			},
+			boxShadow: {
+				'cinematic': 'var(--shadow-cinematic)',
+				'elevated': 'var(--shadow-elevated)'
 			}
 		}
 	},

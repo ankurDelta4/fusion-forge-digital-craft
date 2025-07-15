@@ -8,53 +8,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Dark theme primary colors */
-    --background: 215 28% 7%;
-    --foreground: 210 40% 98%;
+    /* Light theme - Cinematic blue/white */
+    --background: 0 0% 100%;
+    --foreground: 220 16% 20%;
 
-    --card: 220 13% 9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 16% 20%;
 
-    --popover: 220 13% 9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 16% 20%;
 
-    /* Vibrant primary - Electric Blue */
-    --primary: 216 100% 50%;
-    --primary-foreground: 210 40% 98%;
+    /* Cinematic Blue */
+    --primary: 212 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Secondary - Deep purple */
-    --secondary: 260 30% 15%;
-    --secondary-foreground: 210 40% 98%;
+    /* Light Blue Secondary */
+    --secondary: 210 100% 96%;
+    --secondary-foreground: 220 16% 20%;
 
-    --muted: 217 19% 12%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 210 40% 98%;
+    --muted-foreground: 215 16% 45%;
 
-    /* Vibrant accent - Neon cyan */
-    --accent: 180 100% 50%;
-    --accent-foreground: 220 13% 9%;
+    /* Ocean Blue Accent */
+    --accent: 200 100% 45%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217 19% 12%;
-    --input: 217 19% 12%;
-    --ring: 216 100% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 212 100% 50%;
 
-    /* Custom colors for platform */
-    --neon-pink: 320 100% 50%;
-    --neon-green: 120 100% 50%;
-    --electric-purple: 280 100% 50%;
-    --cyber-yellow: 60 100% 50%;
+    /* Custom cinematic colors */
+    --cinema-blue: 212 100% 50%;
+    --ocean-blue: 200 100% 45%;
+    --sky-blue: 195 100% 85%;
+    --steel-blue: 215 28% 45%;
     
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(216 100% 50%), hsl(280 100% 50%));
-    --gradient-accent: linear-gradient(135deg, hsl(180 100% 50%), hsl(120 100% 50%));
-    --gradient-bg: linear-gradient(180deg, hsl(215 28% 7%), hsl(220 13% 9%));
+    /* Cinematic Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(212 100% 50%), hsl(200 100% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(195 100% 85%), hsl(210 100% 96%));
+    --gradient-bg: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 100% 99%));
+    --gradient-hero: linear-gradient(135deg, hsl(212 100% 95%), hsl(200 100% 98%));
     
-    /* Effects */
-    --glow-primary: 0 0 40px hsl(216 100% 50% / 0.3);
-    --glow-accent: 0 0 30px hsl(180 100% 50% / 0.4);
-    --shadow-elevated: 0 25px 50px -12px hsl(215 28% 7% / 0.25);
+    /* Cinematic Effects */
+    --glow-primary: 0 0 40px hsl(212 100% 50% / 0.3);
+    --glow-accent: 0 0 30px hsl(200 100% 45% / 0.4);
+    --shadow-elevated: 0 25px 50px -12px hsl(220 16% 20% / 0.15);
+    --shadow-cinematic: 0 8px 32px hsl(212 100% 50% / 0.12);
 
     --radius: 0.75rem;
 

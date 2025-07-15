@@ -16,11 +16,11 @@ const Navigation = () => {
   }, []);
 
   const navItems = [
-    { href: '#services', label: 'Services' },
-    { href: '#portfolio', label: 'Portfolio' },
-    { href: '#about', label: 'About' },
-    { href: '#testimonials', label: 'Testimonials' },
-    { href: '#contact', label: 'Contact' }
+    { href: '/services', label: 'Services' },
+    { href: '/portfolio', label: 'Portfolio' },
+    { href: '/about', label: 'About' },
+    { href: '/#testimonials', label: 'Testimonials' },
+    { href: '/#contact', label: 'Contact' }
   ];
 
   return (
@@ -53,13 +53,14 @@ const Navigation = () => {
               <motion.a
                 key={item.href}
                 href={item.href}
-                className="text-foreground hover:text-primary transition-colors duration-200 font-medium"
+                className="text-foreground hover:text-primary transition-colors duration-200 font-medium relative group"
                 whileHover={{ y: -2 }}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
                 {item.label}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-primary group-hover:w-full transition-all duration-300"></span>
               </motion.a>
             ))}
             <motion.div
