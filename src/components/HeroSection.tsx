@@ -2,8 +2,10 @@ import { useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Play, Zap, Rocket, Globe } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useSiteData } from '@/contexts/SiteDataContext';
 
 const HeroSection = () => {
+  const { siteData } = useSiteData();
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -145,9 +147,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl font-bold mb-6 leading-tight"
           >
-            <span className="gradient-text">Premium Development</span>
-            <br />
-            <span className="text-foreground">Teams at Your Service</span>
+            <span className="gradient-text">{siteData.hero.title}</span>
           </motion.h1>
 
           <motion.p
@@ -156,9 +156,7 @@ const HeroSection = () => {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed"
           >
-            Connect with elite development teams to build custom software solutions, 
-            SaaS platforms, mobile applications, and drive digital transformation 
-            that propels your business forward.
+            {siteData.hero.subtitle}
           </motion.p>
 
           <motion.div
@@ -171,7 +169,7 @@ const HeroSection = () => {
               size="lg" 
               className="bg-gradient-primary hover:opacity-90 text-lg px-8 py-6 glow-primary group"
             >
-              Start Your Project
+              {siteData.hero.ctaText}
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
             

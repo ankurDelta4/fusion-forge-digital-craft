@@ -8,62 +8,17 @@ import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Trash2, Plus, Edit, Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useSiteData } from "@/contexts/SiteDataContext";
 
 const Admin = () => {
   const { toast } = useToast();
+  const { siteData, updateHeroData, addBlog, deleteBlog } = useSiteData();
   const [activeTab, setActiveTab] = useState("overview");
-
-  // Sample data - in real app this would come from backend
-  const [siteData, setSiteData] = useState({
-    hero: {
-      title: "Transform Your Digital Vision Into Reality",
-      subtitle: "We're a cutting-edge software development agency specializing in web applications, mobile solutions, and digital transformation.",
-      ctaText: "Start Your Project"
-    },
-    services: [
-      {
-        id: 1,
-        title: "Web Development",
-        description: "Custom web applications built with modern technologies",
-        icon: "Code"
-      },
-      {
-        id: 2,
-        title: "Mobile Development",
-        description: "Native and cross-platform mobile applications",
-        icon: "Smartphone"
-      },
-      {
-        id: 3,
-        title: "UI/UX Design",
-        description: "Beautiful and intuitive user interfaces",
-        icon: "Palette"
-      }
-    ],
-    blogs: [
-      {
-        id: 1,
-        title: "The Future of Web Development",
-        excerpt: "Exploring the latest trends and technologies shaping the web",
-        content: "Lorem ipsum dolor sit amet...",
-        date: "2024-01-15",
-        author: "Admin"
-      },
-      {
-        id: 2,
-        title: "Building Scalable Applications",
-        excerpt: "Best practices for creating applications that grow with your business",
-        content: "Lorem ipsum dolor sit amet...",
-        date: "2024-01-10",
-        author: "Admin"
-      }
-    ]
-  });
-
-  const [editingBlog, setEditingBlog] = useState(null);
   const [newBlog, setNewBlog] = useState({ title: "", excerpt: "", content: "", author: "" });
+  const [localHeroData, setLocalHeroData] = useState(siteData.hero);
 
   const handleSaveHero = () => {
+    updateHeroData(localHeroData);
     toast({
       title: "Hero Section Updated",
       description: "Changes have been saved successfully.",
@@ -72,15 +27,7 @@ const Admin = () => {
 
   const handleAddBlog = () => {
     if (newBlog.title && newBlog.content) {
-      const blog = {
-        id: Date.now(),
-        ...newBlog,
-        date: new Date().toISOString().split('T')[0]
-      };
-      setSiteData(prev => ({
-        ...prev,
-        blogs: [blog, ...prev.blogs]
-      }));
+      addBlog(newBlog);
       setNewBlog({ title: "", excerpt: "", content: "", author: "" });
       toast({
         title: "Blog Added",
@@ -90,10 +37,7 @@ const Admin = () => {
   };
 
   const handleDeleteBlog = (id) => {
-    setSiteData(prev => ({
-      ...prev,
-      blogs: prev.blogs.filter(blog => blog.id !== id)
-    }));
+    deleteBlog(id);
     toast({
       title: "Blog Deleted",
       description: "Blog post has been removed successfully.",
@@ -197,10 +141,10 @@ const Admin = () => {
                   <Label htmlFor="hero-title">Main Title</Label>
                   <Input
                     id="hero-title"
-                    value={siteData.hero.title}
-                    onChange={(e) => setSiteData(prev => ({
+                    value={localHeroData.title}
+                    onChange={(e) => setLocalHeroData(prev => ({
                       ...prev,
-                      hero: { ...prev.hero, title: e.target.value }
+                      title: e.target.value
                     }))}
                     className="bg-background/50"
                   />
@@ -209,10 +153,10 @@ const Admin = () => {
                   <Label htmlFor="hero-subtitle">Subtitle</Label>
                   <Textarea
                     id="hero-subtitle"
-                    value={siteData.hero.subtitle}
-                    onChange={(e) => setSiteData(prev => ({
+                    value={localHeroData.subtitle}
+                    onChange={(e) => setLocalHeroData(prev => ({
                       ...prev,
-                      hero: { ...prev.hero, subtitle: e.target.value }
+                      subtitle: e.target.value
                     }))}
                     className="bg-background/50"
                   />
@@ -221,10 +165,10 @@ const Admin = () => {
                   <Label htmlFor="hero-cta">CTA Button Text</Label>
                   <Input
                     id="hero-cta"
-                    value={siteData.hero.ctaText}
-                    onChange={(e) => setSiteData(prev => ({
+                    value={localHeroData.ctaText}
+                    onChange={(e) => setLocalHeroData(prev => ({
                       ...prev,
-                      hero: { ...prev.hero, ctaText: e.target.value }
+                      ctaText: e.target.value
                     }))}
                     className="bg-background/50"
                   />
